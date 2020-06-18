@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="View.Controls.Colon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="6" d:DesignWidth="2">
+    <Viewbox Stretch="Uniform">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Ellipse Fill="DarkSlateGray" x:Name="Top" Width="2" Height="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0" />
+
+            <!--Ghost object so that viewbox wont eat the spacing-->
+            <Ellipse Width="2" Height="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+
+            <Ellipse Fill="DarkSlateGray" x:Name="Bottom" Width="2" Height="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" />
+        </Grid>
+    </Viewbox>
+</UserControl>

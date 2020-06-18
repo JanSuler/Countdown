@@ -1,0 +1,33 @@
+﻿<Window x:Class="View.Windows.StartDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.Windows"
+        xmlns:viewModels="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:modelConverters="clr-namespace:Model.Converters;assembly=Model"
+        xmlns:modelEnums="clr-namespace:Model.Enums;assembly=Model"
+        mc:Ignorable="d"
+        Height="150" Width="200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True">
+    <Window.DataContext>
+        <viewModels:CountdownViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="0.3*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="RadioButtonStackPanel" Orientation="Vertical" Grid.Row="0" Margin="5,5,5,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel.Resources>
+                <modelConverters:RadioButtonConverter x:Key="RadioButtonConverter"/>
+            </StackPanel.Resources>
+            <TextBlock Text="Délka odpočtu:" />
+            <RadioButton x:Name="oneMinButton" Content="1 minuta" IsChecked="{Binding TimerLenghtEnum, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static modelEnums:TimerLenghtEnum.OneMinute}}" />
+            <RadioButton x:Name="threeMinsButton" Content="3 minuty" IsChecked="{Binding TimerLenghtEnum, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static modelEnums:TimerLenghtEnum.ThreeMinutes}}" />
+            <RadioButton x:Name="fiveMinsButton" Content="5 minut" IsChecked="{Binding TimerLenghtEnum, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static modelEnums:TimerLenghtEnum.FiveMinutes}}" />
+        </StackPanel>
+
+        <Button x:Name="StartButton" Content="Zahájit odpočet" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,5,5" IsDefault="true" Command="{Binding StartCommand}" Click="StartButton_Click" />
+    </Grid>
+</Window>
